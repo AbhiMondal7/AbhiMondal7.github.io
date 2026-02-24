@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Abhi Mondal</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="circle-spinner">
+      <div class="arc arc1"></div>
+      <div class="arc arc2"></div>
+      <div class="arc arc3"></div>
+    </div>
+  </div>
+  <!-- Navbar -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#blog">Blogs</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="background_image">
+  <div class="background_image-overlay">
+    <h1>Welcome to my webpage!</h1>
+  </div>
+
+  </section>
+  <!-- Home -->
+  <section id="home">
+    <div class="card about-container">
+      <div class="about-text">
+        <p>
+          Hi! I am Abhi Mondal, a Fourth year BSMS student at IISER Kolkata, majoring in Physics with a minor in Computational and Data Science. I am currently interested in exploring Quantum Information and sensing. I did some interesting works on the observation of beam shift on plasmonic systems (These are some fancy terms 😉, in simple words these are light matter interactions). Beyond academics, I am a Bengali literature enthusiast. I love to capture moments. Also, I am a guitar enthusiast. This space is my little corner for sharing thoughts, photos, and the occasional random ramble.
+        </p>
+      </div>
+      <div class="about-photo">
+        <img src="images\self.jpg" alt="My Photo">
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="section-card">
+    <h2>📸 My Photography</h2>
+
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images\photo_2025-09-13_23-51-07.jpg" alt="Photo 1"></div>
+      <div class="gallery-item"><img src="images\photo_2025-09-13_23-51-13.jpg" alt="Photo 2"></div>
+      <div class="gallery-item"><img src="images\photo_2025-09-13_23-51-32.jpg" alt="Photo 3"></div>
+      <div class="gallery-item"><img src="images\20260224_104539.jpg" alt="Photo 4"></div>
+    </div>
+    <!-- See More button -->
+    <div class="see-more">
+      <a href="gallery.html" class="btn">See More! →</a>
+    </div>
+    </div>
+  </section>
+
+  <!-- Blogs -->
+  <section id="blog">
+    <h2>📖 Blogs </h2>
+    <div class="grid">
+      <div class="card" onclick="openCardModal(this)">
+        <h3>Symphony of light💡</h3>
+        <p>I have been working with beams of light, and it never fails to keep me curious. My interest began back in high school with interference, and since then light has remained both fascinating and unpredictable. It behaves in many ways — almost like people — which means you need a little patience when dealing with it! Maxwell laid the foundations in classical electrodynamics, and his work is always worth revisiting. Feynman, of course, performed his miracles in quantum chromodynamics, though that remains outside my present scope. And if you spend enough time with light, you will inevitably run into Fourier, so getting to know him early is always a wise move.</p>
+        <p>Here are some book suggestions — because who doesn't love a little extra suffering with maths 🤓</p>
+        <ul>
+          <li><strong>Introduction to Electrodynamics</strong> by David J. Griffiths <em>(the holy book of electrodynamics)</em></li>
+          <li><strong>Principles of Optics</strong> by Born and Wolf <em>(the holy book of optics)</em></li>
+          <li><strong>Optics</strong> by Eugene Hecht <em>(a good book for optics)</em></li>
+          <li><strong>The Feynman Lectures on Physics, Vol. II</strong> <em>(classical electromagnetism and matter)</em></li>
+        </ul>
+      </div>
+      <div class="card" onclick="openCardModal(this)">
+        <h3>Dancing of Plasmons 🌟🌀</h3>
+        <p>After exploring photonics, I stumbled upon the world of metamaterials, and more precisely, plasmonics. Honestly, this has been one of the most memorable encounters of my life, right after humans, if you know what I mean. While humans drift in and out of life, plasmonics has been quietly by my side 😂. Enough! It is a fascinating phenomenon, especially useful for designing sensors for biological systems, and plays a crucial role in information transmission. To dive deeper, a clear understanding of the refractive index of materials and the interaction of light with matter is highly desirable. But those are just bookish words — feel free to explore things on your own; after all, that is what humans are supposed to do.</p>
+        <p>Here are some book suggestions — if you enjoy willingly confusing yourself with brilliance 🤓</p>
+        <ul>
+          <li><strong>Plasmonics: Fundamentals and Applications</strong> by Stefan A. Maier <em>(essential for modern plasmonics)</em></li>
+          <li><strong>Surface Plasmons on Smooth and Rough Surfaces and on Gratings</strong> by Heinz Raether <em>(a classic on surface plasmon theory)</em></li>
+          <li><strong>Absorption and Scattering of Light by Small Particles</strong> by Bohren and Huffman <em>(a classic book on different scattering phenomenon)</em></li>
+        </ul>
+      </div>
+      <div class="card" onclick="openCardModal(this)">
+        <h3>Stories that stayed 🌿</h3>
+        <p>I mostly read books in Bengali. Not because English books offend me or anything, but when academics already demand enough English, I prefer to keep my reading in the language that feels like home. Some people may relate, others may politely pretend to. My journey into Bengali literature is not terribly long — like most of my generation, it began with comic books and the timeless fairy tales of ঠাকুমার ঝুলি. I truly fell in love with the language during my ninth standard, when novels stopped being “schoolwork” and started becoming a world of their own. There is still so much left to read, so much waiting to be discovered. I do have a few suggestions — feel free to explore ✨</p>
+        <ul class = "bengali-text">
+          <li><strong>ফেলুদা</strong> সত্যজিৎ রায়</li>
+          <li><strong>ঐতিহাসিক কাহিনী, ব্যোমকেশ বক্সী</strong> শরদিন্দু বন্দ্যোপাধ্যায়</li>
+          <li><strong>গল্পগুচ্ছ</strong> রবীন্দ্রনাথ ঠাকুর <em>(গুরুদেবের যেকোনো সৃষ্টিই অতুলনীয় 🎵)</em></li>
+          <li><strong>কবিতা সমগ্র</strong> জীবনানন্দ দাস</li>
+        </ul>
+        <p>And of course, there are countless more treasures I can't possibly list here — literature has a habit of keeping its best surprises off the page until you find them yourself!</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>📩 Contact Me</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class = "card">
+          <p><i class="fa-solid fa-envelope"></i>  am22ms075@iiserkol.ac.in</p>
+          <p><i class="fa-solid fa-location-dot"></i>  NSCB HALL, IISER Kolkata</p>
+        </div>
+      </div>
+      <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7347.260426737414!2d88.52144018603734!3d22.963841900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8bf0ebd68bc8b%3A0x92d423474389ff5c!2sIndian%20Institute%20of%20Science%20Education%20and%20Research-%20Kolkata!5e0!3m2!1sen!2sin!4v1757789641239!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Abhi Mondal. All rights reserved.
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
+
+  <!-- Fullscreen modal -->
+  <div id="imgModal">
+    <span onclick="closeModal()">&times;</span>
+    <img id="modalImg" src="">
+  </div>
+  
+  <!-- Card Modal -->
+  <div class="card-modal" id="cardModal">
+    <div class="card-modal-content">
+      <span class="close-btn" onclick="closeCardModal()">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+
+</body>
+</html>
