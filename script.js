@@ -28,10 +28,13 @@ function closeModal() {
 // Scroll-to-top button
 const topBtn = document.getElementById("topBtn");
 window.onscroll = function() {
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    topBtn.style.display = "block";
-    } else {
-    topBtn.style.display = "none";
+    // for index page only
+    if (topBtn) {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            topBtn.style.display = "block";
+        } else {
+            topBtn.style.display = "none";
+        }
     }
 };
 function topFunction() {
@@ -97,9 +100,11 @@ images.forEach((img, index) => {
 });
 
 // Close lightbox
-closeBtn.addEventListener("click", () => {
-    lightbox.style.display = "none";
-});
+if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+        lightbox.style.display = "none";
+    });
+}
 
 // Prev / Next navigation
 function showImage(index) {
@@ -109,22 +114,31 @@ function showImage(index) {
     // lightboxCaption.textContent = images[index].dataset.caption;
     currentIndex = index;
 }
-prevBtn.addEventListener("click", () => showImage(currentIndex - 1));
-nextBtn.addEventListener("click", () => showImage(currentIndex + 1));
+
+// Prev / Next navigation
+if (prevBtn) {
+    prevBtn.addEventListener("click", () => showImage(currentIndex - 1));
+}
+if (nextBtn) {
+    nextBtn.addEventListener("click", () => showImage(currentIndex + 1));
+}
 
 // Close on outside click
-lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-    lightbox.style.display = "none";
-    }
-});
+if (lightbox) {
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+            lightbox.style.display = "none";
+        }
+    });
+}
 
 // Keyboard navigation
 document.addEventListener("keydown", (e) => {
-    if (lightbox.style.display === "block") {
-    if (e.key === "ArrowRight") showImage(currentIndex + 1);
-    if (e.key === "ArrowLeft") showImage(currentIndex - 1);
-    if (e.key === "Escape") lightbox.style.display = "none";
+    // Add the 'lightbox' check first
+    if (lightbox && lightbox.style.display === "block") {
+        if (e.key === "ArrowRight") showImage(currentIndex + 1);
+        if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+        if (e.key === "Escape") lightbox.style.display = "none";
     }
 });
 
@@ -143,18 +157,17 @@ cards.forEach((card, index) => {
   }
 });
 
-loadBtn.addEventListener("click", () => {
+if (loadBtn) {
+    loadBtn.addEventListener("click", () => {
+        visibleCount += step;
+        cards.forEach((card, index) => {
+            if(index < visibleCount){
+                card.style.display = "block";
+            }
+        });
 
-  visibleCount += step;
-
-  cards.forEach((card, index) => {
-    if(index < visibleCount){
-      card.style.display = "block";
-    }
-  });
-
-  // hide button when finished
-  if(visibleCount >= cards.length){
-    loadBtn.style.display = "none";
-  }
-});
+        if(visibleCount >= cards.length){
+            loadBtn.style.display = "none";
+        }
+    });
+}
