@@ -343,7 +343,8 @@ padding: 80px 20px;
     border: none;
     border-radius: 12px;
 }
-form input, form textarea {
+
+/* form input, form textarea {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -368,7 +369,8 @@ form button {
 }
 form button:hover {
     background: #5a3e1b;
-}
+} */
+
 /* Scroll-to-top button */
 #topBtn {
     display: none;
@@ -423,4 +425,390 @@ footer {
     .contact-container {
     flex-direction: column;
     }
+}
+
+/* About me section */
+
+.page-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Modern Links & Buttons */
+.modern-link {
+    display: inline-block;
+    color: #195b78;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    background: rgba(25, 91, 120, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.modern-link:hover {
+    background: #195b78;
+    color: white;
+    transform: translateX(5px);
+}
+
+.back-btn {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.2s;
+}
+
+.back-btn:hover {
+    color: #195b78;
+}
+
+/* Timeline Core */
+.timeline-container {
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 50px;
+}
+
+/* Glowing Blue Line */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px; 
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, #00b0f0, #195b78); 
+    border-radius: 4px;
+}
+
+/* Timeline Item & Layout */
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+/* Modern Glowing Dot */
+.timeline-dot {
+    position: absolute;
+    left: -39px; 
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 4px solid #ff4757; /* Bright accent color */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+    z-index: 1;
+}
+
+/* Institute Headers */
+.timeline-badge {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: #2e7d32;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timeline-institute {
+    margin: 10px 0 20px 0;
+    color: #222;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: left; 
+}
+
+/* Flex Row for Cards */
+.timeline-content-row {
+    display: flex;
+    gap: 25px;
+}
+
+/* Aesthetic Cards */
+.modern-card {
+    flex: 1;
+    background: linear-gradient(135deg, #1e6b8c, #13455c); /* Rich gradient based on your blue */
+    color: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modern-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.modern-card h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.card-subtitle {
+    margin: 0 0 15px 0;
+    font-size: 0.85em;
+    color: rgba(255,255,255,0.7);
+}
+
+/* Pill-Shaped Course Tags */
+.course-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 30px; /* Pill shape */
+    font-size: 0.9em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s;
+    cursor: default; /*will change later*/
+}
+
+.tag:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.tag-solid {
+    background: #195b78; /* Your theme blue */
+    color: white;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.9em;
+    font-weight: 500;
+    display: inline-block;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, background 0.2s ease;
+    cursor: default; 
+}
+
+.tag-solid:hover {
+    background: #13455c;
+    transform: translateY(-2px);
+}
+
+/* Image Card Tweaks */
+.image-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 120px;
+    background: rgba(255,255,255,0.1);
+    border: 2px dashed rgba(255,255,255,0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    color: rgba(255,255,255,0.6);
+}
+
+/* Animated Gradient Heading */
+.gradient-heading {
+    font-size: 2.8em;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #00b0f0, #195b78);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+/* The Glowing Underline */
+.gradient-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff4757, transparent);
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .timeline-content-row {
+        flex-direction: column;
+    }
+    .timeline-container::before {
+        left: 15px;
+    }
+    .timeline-dot {
+        left: -38px;
+        width: 14px;
+        height: 14px;
+    }
+    .timeline-container {
+        padding-left: 40px;
+    }
+}
+
+/* Badge Group Layout */
+.badge-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Allows badges to stack neatly on smaller screens */
+    margin-bottom: 12px;
+}
+
+/* Major Badge (Blue) */
+.badge-major {
+    background-color: rgba(0, 176, 240, 0.15); 
+    color: #0077a3;
+}
+
+/* Minor Badge / Link (Red) */
+.badge-minor {
+    background-color: rgba(255, 71, 87, 0.15); 
+    color: #c0392b;
+    text-decoration: none; /* Removes the default link underline */
+    transition: all 0.2s ease;
+    display: inline-block; /* Helps with the hover transform */
+}
+
+
+/* Setup the badge to allow a background layer */
+a.timeline-badge {
+    position: relative;
+    z-index: 1; /* Creates a stacking context */
+    text-decoration: none !important;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* Create the hidden animated gradient border */
+a.timeline-badge::before {
+    content: '';
+    position: absolute;
+    /* Pulls it slightly outside the badge to act as a 2px border */
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    /* The neon gradient colors */
+    background: linear-gradient(90deg, #ff007f, #7928ca, #00b0f0, #4facfe, #00f2fe, #4facfe, #00b0f0, #7928ca, #ff007f);
+    background-size: 400% 100%;
+    border-radius: 22px; /* Slightly larger than the badge's 20px radius */
+    z-index: -1; /* Puts the gradient BEHIND the badge */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: neonGlow 3s linear infinite;
+}
+
+/* When hovered, show the border and turn the badge dark */
+a.timeline-badge:hover {
+    background-color: #13455c !important; /* Turns dark so the neon border pops */
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Fade in the glowing border */
+a.timeline-badge:hover::before {
+    opacity: 1;
+}
+
+/*The animation making the colors slide continuously */
+@keyframes neonGlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+}
+
+
+/* Clickable Institute Headings */
+.institute-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.institute-link .timeline-institute {
+    transition: color 0.2s ease;
+}
+
+.institute-link:hover .timeline-institute {
+    color: #00b0f0; /* Changes to your bright blue on hover */
+}
+
+.mini-gallery {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px; /* Creates nice spacing below the tags */
+    flex-wrap: wrap; /* Allows images to wrap on small mobile screens */
+}
+
+.mini-image {
+    width: 160px; /* Fixed width for uniform look */
+    height: 110px; /* Fixed height */
+    object-fit: cover; /* Prevents the image from looking squished */
+    border-radius: 8px; /* Soft modern corners */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.5); /* Tiny white border for a polaroid feel */
+}
+
+.mini-image:hover {
+    transform: translateY(-5px) scale(1.05); /* Lifts and slightly zooms on hover */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+#imgModal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Lets users know clicking the background closes it */
+}
+
+#imgModal img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Modern shadow */
+}
+
+#imgModal span {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    user-select: none; /* Stops the text cursor from appearing on the X */
 }

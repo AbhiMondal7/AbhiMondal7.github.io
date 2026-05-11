@@ -171,3 +171,34 @@ if (loadBtn) {
         }
     });
 }
+
+// Function to toggle the About Me timeline section
+function toggleAboutSection() {
+  const section = document.getElementById("about-me-section");
+  if (section.style.display === "none" || section.style.display === "") {
+    section.style.display = "block"; // Opens the section
+  } else {
+    section.style.display = "none"; // Closes the section
+  }
+}
+
+const simpleModal = document.getElementById("imgModal");
+const simpleModalImg = document.getElementById("modalImg");
+
+
+document.querySelectorAll(".gallery-item img, .mini-image").forEach(img => {
+    img.addEventListener("click", () => {
+        // Safety check: only run if the simpleModal exists on this specific HTML page
+        if (simpleModal && simpleModalImg) { 
+            simpleModal.style.display = "flex";
+            simpleModalImg.src = img.src;
+        }
+    });
+});
+
+function closeModal() {
+    if (simpleModal) {
+        simpleModal.style.display = "none";
+    }
+}
+
