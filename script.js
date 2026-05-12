@@ -202,3 +202,51 @@ function closeModal() {
     }
 }
 
+document.querySelectorAll('.mini-gallery').forEach(gallery => {
+    const miniImages = gallery.querySelectorAll('.mini-image');
+    const miniLimit = 5; // Number of images to show initially
+    const miniStep = 5;  // Number of images to reveal per click
+    
+    let currentVisible = miniLimit; // Tracks our current index
+
+    // Only trigger if this specific school has more than the initial limit
+    if (miniImages.length > miniLimit) {
+        
+        // Hide the extra images right away
+        for (let i = miniLimit; i < miniImages.length; i++) {
+            miniImages[i].style.display = 'none';
+        }
+
+        // Create a container so the button sits on its own line
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'mini-btn-container';
+
+        // Create the "View More" button
+        const viewMoreBtn = document.createElement('button');
+        viewMoreBtn.textContent = 'View More ↓';
+        viewMoreBtn.className = 'mini-load-more';
+
+        // Attach the button to the gallery
+        btnContainer.appendChild(viewMoreBtn);
+        gallery.appendChild(btnContainer);
+
+        // When clicked, unhide the NEXT batch of images
+        viewMoreBtn.addEventListener('click', () => {
+            // Calculate where to stop this batch (using Math.min so we don't go out of bounds)
+            const nextVisible = Math.min(currentVisible + miniStep, miniImages.length);
+            
+            // Unhide the images for this specific batch
+            for (let i = currentVisible; i < nextVisible; i++) {
+                miniImages[i].style.display = ''; 
+            }
+            
+            // Update our tracker to the new index
+            currentVisible = nextVisible;
+            
+            // If we have reached or passed the end of the array, hide the button
+            if (currentVisible >= miniImages.length) {
+                btnContainer.style.display = 'none'; 
+            }
+        });
+    }
+});
