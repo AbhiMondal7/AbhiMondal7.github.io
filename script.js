@@ -184,14 +184,18 @@ function toggleAboutSection() {
 
 const simpleModal = document.getElementById("imgModal");
 const simpleModalImg = document.getElementById("modalImg");
-
+const simpleModalCaption = document.getElementById("modalCaption"); // Added caption variable
 
 document.querySelectorAll(".gallery-item img, .mini-image").forEach(img => {
     img.addEventListener("click", () => {
-        // Safety check: only run if the simpleModal exists on this specific HTML page
         if (simpleModal && simpleModalImg) { 
             simpleModal.style.display = "flex";
             simpleModalImg.src = img.src;
+            
+            // Grabs the text from alt="..." and puts it in the caption box!
+            if (simpleModalCaption) {
+                simpleModalCaption.textContent = img.alt || ""; 
+            }
         }
     });
 });
@@ -204,8 +208,8 @@ function closeModal() {
 
 document.querySelectorAll('.mini-gallery').forEach(gallery => {
     const miniImages = gallery.querySelectorAll('.mini-image');
-    const miniLimit = 5; // Number of images to show initially
-    const miniStep = 5;  // Number of images to reveal per click
+    const miniLimit = 4; // Number of images to show initially
+    const miniStep = 4;  // Number of images to reveal per click
     
     let currentVisible = miniLimit; // Tracks our current index
 
@@ -232,7 +236,7 @@ document.querySelectorAll('.mini-gallery').forEach(gallery => {
 
         // When clicked, unhide the NEXT batch of images
         viewMoreBtn.addEventListener('click', () => {
-            // Calculate where to stop this batch (using Math.min so we don't go out of bounds)
+            // Calculate where to stop this batch (using Math.min so don't go out of bounds)
             const nextVisible = Math.min(currentVisible + miniStep, miniImages.length);
             
             // Unhide the images for this specific batch
@@ -243,10 +247,45 @@ document.querySelectorAll('.mini-gallery').forEach(gallery => {
             // Update our tracker to the new index
             currentVisible = nextVisible;
             
-            // If we have reached or passed the end of the array, hide the button
+            // If reached or passed the end of the array, hide the button
             if (currentVisible >= miniImages.length) {
                 btnContainer.style.display = 'none'; 
             }
         });
     }
+});
+
+// Time line 
+
+function fixTimelineLine() {
+    const container = document.querySelector('.timeline-container');
+    if (!container) return; // Only run if on the About page
+
+    // Find all the school sections (items)
+    const items = container.querySelectorAll('.timeline-item');
+    
+    if (items.length > 0) {
+        // Logically grab the very last one in the list 
+        const lastItem = items[items.length - 1];
+        
+        // Calculate distance from top of container to the last item.
+        // offsetTop gives us the exact pixel drop. add +15 to reach the center of the red dot
+        const exactHeight = lastItem.offsetTop + 15; 
+        
+        // Inject this exact mathematical measurement into the CSS
+        container.style.setProperty('--line-height', exactHeight + 'px');
+    }
+}
+
+// Trigger the math when the page first loads
+window.addEventListener('load', fixTimelineLine);
+
+// Trigger the math if the screen size changes (like rotating a phone)
+window.addEventListener('resize', fixTimelineLine);
+
+// Trigger the math whenever ANY button is clicked (like "View More")
+document.addEventListener('click', () => {
+    // add a tiny 50 millisecond delay so the photos have time to open 
+    // and push the page down BEFORE do the math
+    setTimeout(fixTimelineLine, 50); 
 });

@@ -297,6 +297,7 @@ padding: 80px 20px;
     background: rgba(0,0,0,0.9);
     align-items: center;
     justify-content: center;
+    flex-direction: column !important;
 }
 #imgModal img {
     max-width: 90%;
@@ -311,6 +312,17 @@ padding: 80px 20px;
     color: white;
     cursor: pointer;
 }
+
+#modalCaption {
+    margin-top: 15px;
+    color: #f5deb3; 
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    letter-spacing: 0.5px;
+}
+
 /*Blog Grid */
 .grid {
     display: grid;
@@ -417,7 +429,7 @@ footer {
     font-weight: bold;
     margin-top: 50px;
 }
-/* Responsive tweaks */
+/* Responsive tweaks
 @media (max-width: 600px) {
     .about-container {
     flex-direction: column;
@@ -425,7 +437,7 @@ footer {
     .contact-container {
     flex-direction: column;
     }
-}
+} */
 
 /* About me section */
 
@@ -473,16 +485,19 @@ footer {
     margin-bottom: 50px;
 }
 
-/* Glowing Blue Line */
+/* Line controlled Js based */
 .timeline-container::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 19px; 
-    height: 100%;
+    top: 10px;       /* Starts at the center of the first dot */
+    left: 21px;      /* Mathematically perfectly centered */
     width: 4px;
-    background: linear-gradient(to bottom, #00b0f0, #195b78); 
+    
+    height: var(--line-height, 100%); 
+    
+    background: linear-gradient(to bottom, #00b0f0, #195b78);
     border-radius: 4px;
+    z-index: 0;
 }
 
 /* Timeline Item & Layout */
@@ -490,6 +505,12 @@ footer {
     position: relative;
     margin-bottom: 60px;
 }
+
+/* Ensure the old buggy node lines are completely dead */
+.timeline-item::before {
+    display: none !important;
+}
+
 
 /* Modern Glowing Dot */
 .timeline-dot {
@@ -535,13 +556,14 @@ footer {
 .modern-card {
     flex: 1;
     width: 100%; 
-    max-width: 850px; 
+    max-width: 850px;
     background: linear-gradient(135deg, #1e6b8c, #13455c);
     color: white;
     border-radius: 16px;
     padding: 25px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box !important;
 }
 
 .modern-card:hover {
@@ -661,24 +683,6 @@ footer {
 }
 
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .timeline-content-row {
-        flex-direction: column;
-    }
-    .timeline-container::before {
-        left: 15px;
-    }
-    .timeline-dot {
-        left: -38px;
-        width: 14px;
-        height: 14px;
-    }
-    .timeline-container {
-        padding-left: 40px;
-    }
-}
-
 /* Badge Group Layout */
 .badge-group {
     display: flex;
@@ -762,26 +766,32 @@ a.timeline-badge:hover::before {
     color: #00b0f0; /* Changes to  bright blue on hover */
 }
 
+
+
+
 .mini-gallery {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* strictly forces exactly 4 equal columns */
     gap: 15px;
-    margin-top: 25px; /* Creates nice spacing below the tags */
-    flex-wrap: wrap; /* Allows images to wrap on small mobile screens */
+    margin-top: 25px; 
+    max-width: 850px; 
+
 }
 
 .mini-image {
-    width: 160px; /* Fixed width for uniform look */
-    height: 110px; /* Fixed height */
+    width: 100%; /* perfectly fill its 1/4th column slot */
+    height: 150px; 
     object-fit: cover; /* Prevents the image from looking squished */
-    border-radius: 8px; /* Soft modern corners */
+    border-radius: 8px; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid rgba(255,255,255,0.5); /* Tiny white border for a polaroid feel */
+    border: 2px solid rgba(255,255,255,0.5); 
 }
 
 .mini-image:hover {
     transform: translateY(-5px) scale(1.05); /* Lifts and slightly zooms on hover */
     box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    z-index: 2;
 }
 
 #imgModal {
@@ -802,7 +812,7 @@ a.timeline-badge:hover::before {
     max-width: 90%;
     max-height: 80%;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Modern shadow */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
 }
 
 #imgModal span {
@@ -835,7 +845,60 @@ a.timeline-badge:hover::before {
 }
 
 .mini-btn-container {
+    grid-column: 1 / -1;
     width: 100%;
     text-align: center;
     margin-top: 15px; /* Spacing above the button */
+}
+
+@media (max-width: 600px) {
+    .about-container {
+        flex-direction: column;
+    }
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    /* Force the mini-gallery into a neat 2-column grid */
+    .mini-gallery {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* Keep images uniform and perfectly cropped in the grid */
+    .mini-image {
+        width: 100% !important;
+        height: 100px !important; 
+        object-fit: cover !important;
+    }
+
+    /* Shrink the badges slightly to prevent text from breaking awkwardly */
+    .timeline-badge {
+        font-size: 0.7em !important;
+        padding: 4px 8px !important;
+    }
+
+    /* Reduce padding inside the blue card so it doesn't feel cramped */
+    .modern-card {
+        padding: 15px !important;
+    }
+}
+
+/*Tablet Responsiveness (768px and below) */
+@media (max-width: 768px) {
+    .timeline-content-row {
+        flex-direction: column;
+    }
+    .timeline-container::before {
+        left: 15px;
+    }
+    .timeline-dot {
+        left: -38px;
+        width: 14px;
+        height: 14px;
+    }
+    .timeline-container {
+        padding-left: 40px;
+    }
 }
